@@ -14,16 +14,24 @@ class ImageGallery extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      imgSrc: null
+      imgSrc: null,
+      isLoading: true
     };
   }
 
   fetchData = () => {
-    fetch().then(res => res.json());
+    fetch("https://auspicious-baritone.glitch.me/gorilla").then(res =>
+      res.json()
+    ).then(data => this.setState({imgSrc: data[0], isLoading: false}))
   };
 
   render() {
-    return <img src={this.state.imgSrc} alt="An animal" />;
+    
+    return this.state.isLoading ? (
+      <img src={this.state.imgSrc} alt="An animal" />
+    ) : (
+      <span>Loading...</span>
+    )
   }
 }
 
