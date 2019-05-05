@@ -28,7 +28,7 @@ export class WindowSize extends Component {
     window.addEventListener("resize", this.handleWindowResize);
   }
   componentWillUnmount() {
-    window.removeEventListener()
+    window.removeEventListener(this.handleWindowResize)
   }
   
 
