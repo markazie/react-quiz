@@ -14,12 +14,12 @@ class AnimalSpotter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0
+      animalSpotted: 0
     };
   }
 
   spotAnimal = () => {
-    this.setState(pre => ({ count: pre.count + 1}))
+    this.setState(pre => ({ animalSpotted: pre.animalSpotted + 1}))
   }
   render() {
     return (

@@ -12,25 +12,29 @@ import React, { Component } from "react";
 
 class ImageGallery extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       imgSrc: null,
       isLoading: true
-    };
+    }
   }
 
   fetchData = () => {
-    fetch("https://auspicious-baritone.glitch.me/gorilla").then(res =>
-      res.json()
-    ).then(data => this.setState({imgSrc: data[0], isLoading: false}))
-  };
+    fetch("https://auspicious-baritone.glitch.me/gorilla")
+      .then(res => res.json())
+      .then(data =>
+        this.setState({ imgSrc: data, isLoading: false }))
+  }
+ componentDidMount() {
+   this.fetchData()
+ }
+ 
 
   render() {
-    
     return this.state.isLoading ? (
-      <img src={this.state.imgSrc} alt="An animal" />
-    ) : (
       <span>Loading...</span>
+    ) : (
+      <img src={this.state.imgSrc} alt="An animal" />
     )
   }
 }
